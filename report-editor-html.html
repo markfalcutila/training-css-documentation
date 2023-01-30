@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./main.js"></script>
+    <link rel="stylesheet" href="../../global/report-editor-style.css">
+    
+    <style> 
+        body{
+            
+        }
+        .page-header, .page-header-space {
+            height: 200px;
+            background:transparent!important;
+            z-index:99!important;
+            border:1px solid red;
+        }
+
+        .page-footer, .page-footer-space {
+            height: 100px;
+            background:transparent!important;
+            z-index:99!important;
+        }
+
+        .page-footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background:transparent!important;
+            z-index:99!important;
+            border:1px solid green;
+        }
+
+        .page-header {
+            position: fixed;
+            top: 0mm;
+            width: 100%;
+            background:transparent!important;
+            z-index:99!important;
+            /* border:1px solid red; */
+        }
+
+        .pagee {
+            page-break-after: always;
+            width:100%!important;
+            z-index:10000!important;
+            padding:20px 0.7in!important
+        }
+
+        @page {
+            margin: 0;
+        }
+
+        @media print {
+                thead {display: table-header-group;} 
+                tfoot {display: table-footer-group;}
+                button {display: none;}
+                body {margin: 0;}
+            .bg-img{
+                position: fixed;
+                bottom: 130px; 
+                right: -100px;
+                z-index:1!important;
+                transform: scale(1.3);
+            }
+            .mainmain{
+                -webkit-print-color-adjust: exact;
+                background-size:contain;
+                position: fixed;
+                top:20%;
+            }
+            textarea{
+                background-color:red!important;
+                font-family: Arial, Helvetica!important, sans-serif!important; resize:none!important;
+                -webkit-print-color-adjust: exact;
+                padding:none!important;
+                min-height:12px!important;
+            }	
+            .htx-header-title{
+                background-color:gray!important;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+        
+      
+    </style>
+    
+</head>
+
+<body onload="doLoad()" >
+    <p id="report_data" hidden>
+        <%= __report_data %>
+    </p>
+        <div class="mainmain ">
+            <img src="../../global/htx-bg4.png" class="h100 w100" alt="">
+        </div>
+        
+        <div class="page-header  font-tahoma " style="text-align: center; padding:20px 0.7in 15px!important">
+            <label class="lb15">Header</label>
+            <br>
+            <label class="lb15">(you can design the header here)</label>
+        </div>
+
+        
+        <div class="page-footer font-tahoma d-flex justify-content-center flex-column align-center">
+            <label class="lb15">Footer</label>
+            <br>
+            <label class="lb15">(you can design the footer here)</label>
+            
+        </div>
+            
+        
+        <table style="position: relative;  width:100%!important;"">
+
+                <thead>
+                    <tr>
+                        <td>
+                        <!--place holder for the fixed-position header-->
+                        <div class="page-header-space"></div>
+                        </td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td class=" w100">
+                            <!--*** CONTENT GOES HERE ***-->
+                            <div class="pagee pl-30 pr-30  w100 font-tahoma text-center ">
+                                    <label class="lb15">Body</label>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td>
+                        <div class="page-footer-space"></div>
+                        </td>
+                    </tr>
+                </tfoot>
+
+        </table>
+</body>
+</html>
